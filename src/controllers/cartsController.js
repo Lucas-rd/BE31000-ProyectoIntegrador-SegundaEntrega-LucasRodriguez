@@ -1,5 +1,3 @@
-import { getCartsService, postCartsService } from "../services/cartsService.js";
-import { getProductsService } from "../services/productsService.js";
 import daos from '../daos/index.js'
 
 const cart = new daos.CartDao()
@@ -8,7 +6,7 @@ const cartControllerGet = async (req, res) => {
     try {
         const idCart = req.params.id
         const cartResponse = await cart.getById(idCart)
-    
+
         res.send(cartResponse)
     } catch (error) {
         console.log(error)

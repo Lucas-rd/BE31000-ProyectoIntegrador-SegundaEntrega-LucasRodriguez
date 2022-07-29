@@ -5,12 +5,8 @@ const prod = new daos.ProductDao()
 const productControllerGet = async (req, res) => {
     try {
         if(req.params.id){
-            if(req.params.id.match(/^[0-9a-fA-F]{24}$/)){
             const productsResponse = await prod.getById(req.params.id)
-            res.send(productsResponse)}
-            else {
-                res.status(404).send("El id no es valido! :(")
-            }
+            res.send(productsResponse)
         } else {
             const productsResponse = await prod.getAll()
             res.send(productsResponse)
